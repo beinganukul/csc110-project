@@ -5,6 +5,7 @@
 #include<stdio.h>
 #include<errno.h>
 #include<fcntl.h>
+#include<string.h>
 
 #define BUFF_SIZE 99999
 
@@ -51,11 +52,14 @@ int main(int argc, char *argv[]) {
                 break;
         }
     } 
-    else if (df < 0) {
-        close(sf);
-        perror("Error");
-    }
-
+    //else if (df < 0) {
+    //    close(sf);
+    //    perror("Error");
+    //}
+    char *src = argv[1];
+    char *dest = argv[2];
+    strcat(dest, src);
+        printf("%s %s", src, dest); // needs debugging here
     copy_file(sf, df);
     close(sf);
     close(df);
@@ -64,7 +68,7 @@ int main(int argc, char *argv[]) {
     exit(EXIT_SUCCESS);
 }
 
-void copy_file(int sf, int df) {
+void copy_file(int sf, int df) { // this need directory copy rebuild
     int r;
     char data[BUFF_SIZE];
     while((r = read(sf, data, BUFF_SIZE)) > 0) {
