@@ -8,17 +8,13 @@
 
 void cat(int);
 int main(int argc, char *argv[]) {
-    if(argc < 2) {
-        printf("usage: ./cat filename");
-        exit(1);
-    }
 
     ++argv;
 
     int fd;
     fd = fileno(stdin);
 
-    while(*argv) {
+    while(*argv != 0) {
 
         if(strcmp(*argv, "-") == 0) {
             fd = fileno(stdin);
@@ -31,11 +27,12 @@ int main(int argc, char *argv[]) {
         }
         ++argv;
         cat(fd);
-        close(fd);
+        if (fd != fileno(stdin)) {
+            close(fd);
+        }
     }
-    if (fd != fileno(stdin)) {
-        close(fd);
-    }
+    cat(fd);
+    close(fd);
 }
 
 void cat(int rfd) {
@@ -45,17 +42,16 @@ void cat(int rfd) {
     struct stat sbuf;
 
     wfd = fileno(stdout);
+        if (fstat(wfd, &sbuf)) {
+            err(1, "stdout");
+        }
 
-    if (fstat(wfd, &sbuf)) {
-        err(1, "stdout");
-    }
+        bsize = sbuf.st_blksize;
+        buf = malloc(bsize);
 
-    bsize = sbuf.st_blksize;
-    buf = malloc(bsize);
-
-    if (!buf) {
-        err(1, 0);
-    }
+        if(buf == NULL) {
+            err(1, 0);
+        }
 
     ssize_t nr, nw;
     int offset = 0;
@@ -70,5 +66,5 @@ void cat(int rfd) {
         }
         nr = read(rfd, buf, bsize);
     }
-    //free(buf);
+    free(buf);
 }

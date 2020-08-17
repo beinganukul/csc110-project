@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-Wall -ggdb3
 SRCS = $(wildcard *.c)
 
 PROGS = $(patsubst %.c,%,$(SRCS))

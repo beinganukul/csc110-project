@@ -1,0 +1,20 @@
+\pagestyle{empty}
+\begin{figure}[tp] % inserting CDCSIT Logo
+\centering
+\includegraphics[width=90pt]{/home/anukul/temporary/csc110-project/scrot/logo}
+\end{figure}
+\begin{center}
+ {\Large \textbf{{Re-Implementing cat command from GNU Core Utilities}}}\par
+ {\large \textbf{{A Project Report}\\}}
+\begin{figure}[hbtp]
+ \centering
+ \includegraphics[width=45pt,height=100pt]{/home/anukul/temporary/csc110-project/scrot/vlines}
+\end{figure}
+  {\Large \textbf{{Submitted By}\\}}
+  {\Large Anukul Adhikari\\\large Roll No. 10\\ \large Date: {\today}}\par        
+{\Large \textbf{{Submitted To}\\}}
+{\large Bhaktapur Multiple Campus \\ Department of Computer Science and Information Technology\\
+					Doodhpati, Bhaktapur, Nepal }\par					
+{\Large\vspace*{5mm} \textbf {Under the Supervision of}\\
+			\vspace*{3mm}\large Mr. Sushant Poudel}\par 
+\end{center}
