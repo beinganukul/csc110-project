@@ -3,7 +3,7 @@
 to run program
 ```
 $ git clone https://github.com/beinganukul/csc110-project.git
-$ cd csc110-project/
+$ cd csc110-project/src/
 $ make
 $ ./cat cat.c
 ```
